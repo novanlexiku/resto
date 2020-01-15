@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
 // colors
-$primary: #CBAA5C;
+$primary: #FFFBE6;
 $error: #ef5777;
 $success: #1abc9c;
 $light: #F5F8FA;
@@ -50,7 +50,7 @@ a {
 	cursor: pointer;
 
 	&:hover {
-		color: lighten($primary, 5%);
+		color: lighten($primary, 10%);
 	}
 }
 
@@ -88,7 +88,7 @@ section {
 	z-index: 9999;
 
 	p {
-		background: $white;
+		background: $primary;
 		width: 150px;
 		text-align: center;
 		margin: 40vh auto 0;

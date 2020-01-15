@@ -2,10 +2,7 @@
     <div id="login">
         
         <section>
-            <div class="col1">
-                <h1>GILI SEAFOOD & GRILL</h1>
-                <p>Selamat datang di GILI SEAFOOD & GRILL, Pesan tempat yang nyaman untuk menginap. </p>
-            </div>
+            
             <div class="col2" :class="{ 'signup-form': !showLoginForm && !showForgotPassword }">
 
                 <!-- form login -->
@@ -18,7 +15,7 @@
                     @click:append="show = !show"
                     v-model.trim="loginForm.password" id="password1" prepend-icon="mdi-textbox-password">
                     </v-text-field>
-                    <button @click="login" class="button" :loading="loading">Log In</button>
+                    <button @click="login" class="button primary" :loading="loading">Log In</button>
                     <div class="extras">
                         <a @click="togglePasswordReset">Lupa Password</a>
                         <a @click="toggleForm">Daftar untuk berlangganan</a>
@@ -80,7 +77,7 @@
                     <div class="ml-8">
                     <img height="200" width="300" :src="imageUrl" >
                     </div>
-                    <button @click="signup" class="button mt-3" :loading="loading">Daftar</button>
+                    <button @click="signup" class="button primary mt-3" :loading="loading">Daftar</button>
                     <div class="extras">
                         <a @click="toggleForm">Kembali ke Login</a>
                     </div>
@@ -92,7 +89,7 @@
                         <h1>Reset Password</h1>
                         <p>Kami akan mengirimkan Anda email untuk mengatur ulang kata sandi Anda</p>
                         <v-text-field label="Email" v-model.trim="passwordForm.email" id="email3" prepend-icon="mdi-email" :rules="emailRules"></v-text-field>
-                        <button @click="resetPassword" class="button" :loading="loading">Submit</button>
+                        <button @click="resetPassword" class="button primary" :loading="loading">Submit</button>
                         <div class="extras">
                             <a @click="togglePasswordReset">Back to Log In</a>
                         </div>
@@ -100,7 +97,7 @@
                     <div v-else>
                         <h1>Email telah dikirim</h1>
                         <p>periksa email Anda untuk melihat tautan guna mengatur ulang kata sandi Anda</p>
-                        <button @click="togglePasswordReset" class="button">Kembali ke login</button>
+                        <button @click="togglePasswordReset" class="button primary">Kembali ke login</button>
                     </div>
                 </v-form>
                 <!-- Alert -->

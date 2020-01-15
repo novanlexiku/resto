@@ -7,12 +7,14 @@ import Pelanggan from '../components/menu/pengguna/Pelanggan'
 import Karyawan from '../components/menu/pengguna/Karyawan'
 import Rooms from '../components/menu/room/Rooms'
 import Room from '../components/menu/room/Room'
+import Foods from '../components/menu/food/Foods'
+import Food from '../components/menu/food/Food'
 import Reservasi from '../components/menu/res/Reservasi'
 import Konfirmasi from '../components/menu/res/Konfirmasi'
 import KonfirmasiPelanggan from '../components/menu/res/KonfirmasiPelanggan'
 import ListRes from '../components/menu/res/HistoryReservasi'
 import ListProRes from '../components/menu/res/ListReservasi'
-import Explore from '../components/menu/Explore'
+import FoodExplore from '../components/menu/Explore'
 import Tutorial from '../components/menu/tutorial/Tutorial'
 import Bank from '../components/menu/bank/Banks'
 import CheckIn from '../components/menu/check/CheckIn'
@@ -94,9 +96,19 @@ const routes = [
     component: Reservasi,
     beforeEnter: AuthGuard
   },{
-    path: '/explore',
-    name: 'Explore',
-    component: Explore
+    path: '/foods',
+    name: 'Foods',
+    component: Foods,
+    beforeEnter: AuthGuard
+  },{
+    path: '/foods/:id',
+    name: 'Food',
+    props: true,
+    component: Food
+  },{
+    path: '/foodnbeverages',
+    name: 'FoodExplore',
+    component: FoodExplore
   },{
     path: '/bank',
     name: 'Bank',

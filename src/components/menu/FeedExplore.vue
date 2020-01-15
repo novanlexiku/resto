@@ -8,7 +8,7 @@
               :height="value.prominent ? 450 : 350"
               color="grey lighten-1"
               dark
-              router :to="`/rooms/${value.id}`"
+              router :to="`/foods/${value.id}`"
               tile
               flat
               :id="`${value.id}`"
@@ -50,7 +50,7 @@
                       color="primary"
                       label
                       small
-                      @click="onLoadRoom(value.id)"
+                      @click="onLoadFood(value.id)"
                     >
                       Detail
                     </v-chip>
@@ -84,8 +84,8 @@
       }
     },
     methods:{
-      onLoadRoom(id){
-        this.$router.push('/rooms/' + id)
+      onLoadFood(id){
+        this.$router.push('/foods/' + id)
       }
     }
   }

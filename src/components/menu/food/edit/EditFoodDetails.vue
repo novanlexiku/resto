@@ -1,8 +1,8 @@
 <template>
   <v-dialog max-width="800px" v-model="dialog">
         <template v-slot:activator="{on}">
-             <v-chip
-                      v-on="on"
+                     <v-chip
+                          v-on="on"
                           class="text-uppercase mt-2"
                           color="secondary"
                           label
@@ -13,14 +13,14 @@
         </template>
       <v-card>
             <v-card-title>
-                <h4>Edit Bank</h4>
+                <h4>Tambah Makanan</h4>
             </v-card-title>
             <v-card-text>
                 <v-form class="px-3" ref="form" @submit.prevent="submit">
-                    <v-text-field label="Nama Bank" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
-                    <v-text-field label="Nomor Rekening" v-model="rekening" prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
-                    <v-textarea label="Atas Nama" v-model="nama" prepend-icon="mdi-border-color" :rules="inputRules"></v-textarea>
-                    <v-btn text class="primary ml-8 mt-3" type="submit" :loading="loading">Edit Bank</v-btn>
+                    <v-text-field label="Nama Makanan" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
+                    <v-text-field label="Harga/Hari" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
+                    <v-textarea label="Spesifikasi" v-model="deskripsi" prepend-icon="mdi-border-color" :rules="inputRules"></v-textarea>
+                    <v-btn text class="primary ml-8 mt-3" type="submit" :loading="loading">Edit Makanan</v-btn>
                 </v-form>
             </v-card-text>
         </v-card>
@@ -28,14 +28,13 @@
 </template>
 
 <script>
-
 export default {
-    props:['bank'],
+  props:['food'],
   data () {
       return {
-        title: this.bank.title,
-        rekening: this.bank.rekening,
-        nama: this.bank.nama,
+        title: this.food.title,
+        harga: this.food.harga,
+        deskripsi: this.food.deskripsi,
         // Rules input + rules date
         inputRules:[
                 v => !!v || 'Input is required',
@@ -54,17 +53,17 @@ export default {
   methods: {
     submit(){
       if(this.$refs.form.validate()){
-          this.loading = true;
-          const bank = {
-              id: this.bank.id,
+          this.loading = true
+          const food = {
+              id: this.food.id,
               title: this.title,
-              rekening: this.rekening,
-              nama: this.nama,
+              harga: this.harga,
+              deskripsi: this.deskripsi,
           }
-      this.$store.dispatch('editBank', bank)
+      this.$store.dispatch('EditFood', food)
       this.loading = false;
       this.dialog = false;
-      this.$emit('bankEdit');
+      this.$emit('foodEdit');
       }
     },
     

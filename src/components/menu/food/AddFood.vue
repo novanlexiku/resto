@@ -2,23 +2,23 @@
   <v-dialog max-width="800px" v-model="dialog">
         <template v-slot:activator="{on}">
             <v-btn small text v-on="on" color="grey">
-                <span class="subtitle-2">Tambah Ruangan</span>
+                <span class="subtitle-2">Tambah Makanan</span>
                 <v-icon right small>mdi-plus-box</v-icon>
             </v-btn>
         </template>
       <v-card>
             <v-card-title>
-                <h4>Tambah Ruangan</h4>
+                <h4>Tambah Makanan</h4>
             </v-card-title>
             <v-card-text>
                 <v-form class="px-3" ref="form" @submit.prevent="submit">
-                    <v-text-field label="Nama Ruangan" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
+                    <v-text-field label="Nama Makanan" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
                     <v-text-field label="Harga/Hari" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
                     <v-select
                       :items="items"
                       item-text="text"
                       item-value="value"
-                      label="Jenis Ruangan"
+                      label="Jenis Makanan"
                       v-model="jenis"
                       bottom
                       autocomplete
@@ -35,7 +35,7 @@
                     <img height="200" width="300" :src="imageUrl" >
                     </div>
                     <v-textarea label="Spesifikasi" v-model="deskripsi" prepend-icon="mdi-border-color" :rules="inputRules"></v-textarea>
-                    <v-btn text class="primary ml-8 mt-3" type="submit" :loading="loading">Tambah Ruangan</v-btn>
+                    <v-btn text class="primary ml-8 mt-3" type="submit" :loading="loading">Tambah Makanan</v-btn>
                 </v-form>
             </v-card-text>
         </v-card>
@@ -78,7 +78,7 @@ export default {
           if (!this.image){
             return
           }
-          const room = {
+          const food = {
               title: this.title,
               harga: this.harga,
               status: this.status,
@@ -87,11 +87,11 @@ export default {
               image: this.image,
               prominent: this.prominent
           }
-      this.$store.dispatch('createRoom', room)
+      this.$store.dispatch('createFood', food)
       this.loading = false;
       this.dialog = false;
       this.imageUrl = null;
-      this.$emit('roomAdded');
+      this.$emit('foodAdded');
       this.$refs.form.reset();
       }
     },

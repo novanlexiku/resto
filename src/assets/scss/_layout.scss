@@ -41,12 +41,11 @@ header {
 
     @media screen and (max-width: 742px) {
         height: 100vh;
-        background: $white;
     }
 
     .col1,
     .col2 {
-        height: 160vh;
+        height: 170vh;
         padding-top: 30vh;
 
         @media screen and (max-width: 742px) {
@@ -55,7 +54,7 @@ header {
         }
     }
     .col1 {
-        color: $white;
+        color: $primary;
         @media screen and (max-width: 742px) {
             display: none;
         }
@@ -122,9 +121,7 @@ header {
         background: $white;
         padding: 2rem;
 
-        h5 {
-
-        }
+        
 
         p {
             color: $medium;

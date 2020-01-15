@@ -13,6 +13,7 @@ export default new Vuex.Store({
   state: {
     loadedBanks:[],
     loadedRooms: [],
+    loadedFoods: [],
     loadedReservasi:[],
     loadedUsers:[],
     loadedKonfirmasi:[],
@@ -45,6 +46,29 @@ export default new Vuex.Store({
       }
       if (payload.harga) {
         room.harga = payload.harga
+      }
+    },
+    // set perubahan data food
+    setLoadedFoods (state, payload) {
+      state.loadedFoods = payload
+    },
+    // push data Food  
+    createFood (state, payload){
+      state.loadedFoods.push(payload)
+    },
+    // update data Food
+    updateFood (state, payload) {
+      const food = state.loadedFoods.find(food => {
+        return food.id === payload.id
+      })
+      if (payload.title) {
+        food.title = payload.title
+      }
+      if (payload.deskripsi) {
+        food.deskripsi = payload.deskripsi
+      }
+      if (payload.harga) {
+        food.harga = payload.harga
       }
     },
     // update data pengguna
@@ -197,6 +221,23 @@ export default new Vuex.Store({
      })
       })    
     },
+    // load data food & bever
+    loadFoods ({commit}) {
+      
+      // set data menggunakan cloud firestore
+      db.collection("foods")
+      .onSnapshot(function(querySnapshot) {
+        const foods = []
+        querySnapshot.forEach((doc) => {
+          foods.push({
+            ...doc.data(),
+            id: doc.id
+          })
+          commit('setLoadedFoods', foods)
+          
+     })
+      })    
+    },
     // load data bank
     loadBanks ({commit}) {
       
@@ -287,7 +328,7 @@ export default new Vuex.Store({
     // AKSI UNTUK DELETE ROOM
     deleteBank({commit}, payload){
       db.collection("banks").doc(payload.id).delete().then(function() {
-        console.log("Document successfully deleted!");
+        console.log("Dokumen berhasil dihapus!");
     }).catch(function(error) {
       commit('clearError')
         console.error("Error removing document: ", error);
@@ -364,7 +405,84 @@ export default new Vuex.Store({
     // AKSI UNTUK DELETE ROOM
     deleteRoom({commit}, payload){
       db.collection("rooms").doc(payload.id).delete().then(function() {
-        console.log("Document successfully deleted!");
+        console.log("Dokumen berhasil dihapus!");
+    }).catch(function(error) {
+      commit('clearError')
+        console.error("Error removing document: ", error);
+    });
+    
+    },
+    // aksi untuk menyimpan data food
+    createFood ({commit, getters}, payload) {
+      const food = {
+        title: payload.title,
+        harga: payload.harga,
+        status: payload.status,
+        deskripsi: payload.deskripsi,
+        jenis: payload.jenis,
+        prominent: payload.prominent,
+        creatorId: getters.user.id
+      }
+      let imageUrl
+      let key
+      // menghubungkan ke firebase dan simpan di cloud firestore
+      db.collection('foods').add(food)
+      .then((data) => {
+        // ambil id database sebagai key
+        key = data.id
+        return key
+      })
+      .then(key => {
+        // edit nama gambar kemudian simpan ke storage
+        const filename = payload.image.name
+        const ext = filename.slice(filename.lastIndexOf('.'))
+        return firebase.storage().ref('foods/' + key + ext).put(payload.image)
+      })
+      .then(filedata => {
+        console.log('Upload Berhasil')
+        // ambil url gambar dari storage
+        let imagePath = filedata.metadata.fullPath
+        return firebase.storage().ref().child(imagePath).getDownloadURL()
+      })
+      .then(url => {
+        // update database field image dengan di isi url gambar
+        imageUrl = url
+        return db.collection('foods').doc(key).update({image: imageUrl})
+      })
+      .then(() => {
+        commit('setLoading', false)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+    },
+    //Aksi edit food
+    EditFood ({commit}, payload){
+      const updateObj = {}
+      if (payload.title) {
+        updateObj.title = payload.title
+      }
+      if (payload.deskripsi) {
+        updateObj.deskripsi = payload.deskripsi
+      }
+      if (payload.harga) {
+        updateObj.harga = payload.harga
+      }
+      var update = db.collection("foods").doc(payload.id);
+      update.update(updateObj)
+      .then(() => {
+        
+        commit('updateFood', payload)
+      })
+      .catch(error => {
+        console.log(error)
+        
+      })
+    },
+    // AKSI UNTUK DELETE ROOM
+    deleteFood({commit}, payload){
+      db.collection("foods").doc(payload.id).delete().then(function() {
+        console.log("Dokumen berhasil dihapus!");
     }).catch(function(error) {
       commit('clearError')
         console.error("Error removing document: ", error);
@@ -676,7 +794,7 @@ export default new Vuex.Store({
     // AKSI UNTUK DELETE PELANGGAN
     deletePelanggan({commit}, payload){
       db.collection("users").doc(payload.id).delete().then(function() {
-        console.log("Document successfully deleted!");
+        console.log("Dokumen berhasil dihapus!");
     }).catch(function(error) {
       commit('clearError')
         console.error("Error removing document: ", error);
@@ -745,7 +863,7 @@ export default new Vuex.Store({
     // AKSI UNTUK DELETE KARYAWAN
     deleteKaryawan({commit}, payload){
       db.collection("users").doc(payload.id).delete().then(function() {
-        console.log("Document successfully deleted!");
+        console.log("Dokumen berhasil dihapus!");
     }).catch(function(error) {
       commit('clearError')
         console.error("Error removing document: ", error);
@@ -954,7 +1072,25 @@ export default new Vuex.Store({
         })
       } 
     },
+    //data yang akan ditampilkan di landing
+    featuredFoods (state) {
+      return state.loadedFoods
+    },
     // Filter data yang akan di load
+    loadedFoods (state){
+      return state.loadedFoods.filter(food =>{
+        return food.status === 'available'
+      })
+    },
+    // Data di load per id
+    loadedFood (state){
+      return (foodID) => {
+        return state.loadedFoods.find((food) => {
+          return food.id === foodID
+        })
+      } 
+    },
+    // Filter data bank yang akan di load
     loadedBanks (state){
       return state.loadedBanks.filter(bank =>{
         return bank.status === 'available'

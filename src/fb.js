@@ -6,14 +6,14 @@ import 'firebase/firebase-analytics'
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyAELl91CJrzUzI5Vr7cgB687v_htVeKiEc",
-  authDomain: "homestay-9f549.firebaseapp.com",
-  databaseURL: "https://homestay-9f549.firebaseio.com",
-  projectId: "homestay-9f549",
-  storageBucket: "gs://homestay-9f549.appspot.com/",
-  messagingSenderId: "600613015666",
-  appId: "1:600613015666:web:2c039deea214f787df32eb",
-  measurementId: "G-YP00J8KH82"
+  apiKey: "AIzaSyDC4ec4D8Nrsy7HePPwvZ4aj4TaYk1-XMU",
+  authDomain: "resto-6b127.firebaseapp.com",
+  databaseURL: "https://resto-6b127.firebaseio.com",
+  projectId: "resto-6b127",
+  storageBucket: "gs://resto-6b127.appspot.com/",
+  messagingSenderId: "336889404396",
+  appId: "1:336889404396:web:e21de093c202eed717fec9",
+  measurementId: "G-53BJ5RMG0D"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);

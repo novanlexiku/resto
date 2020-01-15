@@ -9,10 +9,10 @@
       </v-flex>
 
       <feed-card
-        v-for="(room, i) in paginatedrooms"
-        :key="room.id"
+        v-for="(food, i) in paginatedfoods"
+        :key="food.id"
         :size="layout[i]"
-        :value="room"
+        :value="food"
       />
     </v-layout>
 <!-- Pagination -->
@@ -78,16 +78,16 @@
     }),
 
     computed: {
-      rooms () {
-        return this.$store.getters.loadedRooms
+      foods () {
+        return this.$store.getters.loadedFoods
       },
       pages () {
-        return Math.ceil(this.rooms.length / 6)
+        return Math.ceil(this.foods.length / 6)
       },
-      paginatedrooms () {
+      paginatedfoods () {
         const start = (this.page - 1) * 6
         const stop = this.page * 6
-        return this.rooms.slice(start, stop)
+        return this.foods.slice(start, stop)
       }
     },
 

@@ -57,25 +57,10 @@
           icon: 'mdi-instagram'
         },
         {
-          href: '#!',
+          href: 'https://www.facebook.com/waroenggiliseafood/',
           icon: 'mdi-facebook'
         },
-        {
-          href: '#!',
-          icon: 'mdi-google-plus'
-        },
-        {
-          href: '#!',
-          icon: 'mdi-reddit'
-        },
-        {
-          href: '#!',
-          icon: 'mdi-discord'
-        },
-        {
-          href: '#!',
-          icon: 'mdi-pinterest'
-        }
+        
       ]
     }),
     inheritAttrs: false,

@@ -15,7 +15,7 @@
                     <v-text-field label="Nama Bank" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
                     <v-text-field label="Nomor Rekening" v-model="rekening" prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
                     <v-textarea label="Atas Nama" v-model="nama" prepend-icon="mdi-border-color" :rules="inputRules"></v-textarea>
-                    <v-btn text class="success mx-0 mt-3" type="submit" :loading="loading">Tambah Bank</v-btn>
+                    <v-btn text class="primary ml-8 mt-3" type="submit" :loading="loading">Tambah Bank</v-btn>
                 </v-form>
             </v-card-text>
         </v-card>

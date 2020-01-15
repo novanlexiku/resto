@@ -156,14 +156,14 @@ export default {
         items () {
             let items = [
                 { text: 'Home', icon: 'mdi-home', route: '/' },
-                { text: 'Explore', icon: 'mdi-map', route: '/explore' },
+                { text: 'Food & Beverages', icon: 'mdi-food-fork-drink', route: '/foodnbeverages' },
                 { text: 'Login', icon: 'mdi-map-marker', route: '/login' },
                 { text: 'Tutorial', icon: 'mdi-timeline-help-outline', route: '/tutorial' },
             ]
             if (this.userIsAuthenticated && this.loggedIn) {
                 items = [
                 { text: 'Home', icon: 'mdi-home', route: '/' },
-                { text: 'Explore', icon: 'mdi-map', route: '/explore' },
+                { text: 'Food & Beverages', icon: 'mdi-food-fork-drink', route: '/foodnbeverages' },
                 { text: 'History', icon: 'mdi-history', route: '/history' },
                 { text: 'Konfirmasi', icon: 'mdi-marker-check', route: '/konfirmasipelanggan' },
                 { text: 'Profile', icon: 'mdi-face-profile', route: '/user/profile' },
@@ -173,8 +173,9 @@ export default {
             if (this.userIsAdmin && this.loggedIn){
                 items = [
                 { text: 'Home', icon: 'mdi-home', route: '/' },
-                { text: 'Explore', icon: 'mdi-map', route: '/explore' },
-                { text: 'Rooms', icon: 'mdi-archive', route: '/rooms' },
+                { text: 'Food & Beverages', icon: 'mdi-food-fork-drink', route: '/foodnbeverages' },
+                { text: '+ Ruangan', icon: 'mdi-room-service', route: '/rooms' },
+                { text: '+ Makanan', icon: 'mdi-food-fork-drink', route: '/foods' },
                 { text: 'Profile', icon: 'mdi-face-profile', route: '/user/profile' },
                 { text: 'Bank', icon: 'mdi-bank', route: '/bank' },
                 { text: 'Tutorial', icon: 'mdi-timeline-help-outline', route: '/tutorial' },
@@ -183,7 +184,7 @@ export default {
             if (this.userIsKaryawan && this.loggedIn){
                 items = [
                 { text: 'Home', icon: 'mdi-home', route: '/' },
-                { text: 'Explore', icon: 'mdi-map', route: '/explore' },
+                { text: 'Food & Beverages', icon: 'mdi-food-fork-drink', route: '/foodnbeverages' },
                 { text: 'Konfirmasi', icon: 'mdi-marker-check', route: '/konfirmasipelanggan' },
                 { text: 'Profile', icon: 'mdi-face-profile', route: '/user/profile' },
                 ]

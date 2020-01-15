@@ -24,7 +24,6 @@
               <v-btn
                 color="primary"
                 depressed
-                rounded
                 router to="/login"
               >
                 Berlangganan
