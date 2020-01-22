@@ -144,7 +144,7 @@
                                                         <v-text-field v-model="total"  prefix="IDR " prepend-icon="mdi-currency-usd" readonly></v-text-field>
                                                         </v-col>
                                                         <v-col cols="12" sm="6">
-                                                        <v-text-field v-model="checkin" prepend-icon="mdi-calendar-clock" placeholder="Tanggal dan Waktu Check-In" readonly></v-text-field>
+                                                        <v-text-field v-model="checkin" prepend-icon="mdi-calendar-clock" label="Tanggal dan Waktu Check-In" readonly></v-text-field>
                                                         </v-col>
                                                     </v-form>
                                                     <v-btn

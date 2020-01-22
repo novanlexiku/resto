@@ -91,7 +91,7 @@
                         <v-text-field label="Email" v-model.trim="passwordForm.email" id="email3" prepend-icon="mdi-email" :rules="emailRules"></v-text-field>
                         <button @click="resetPassword" class="button primary" :loading="loading">Submit</button>
                         <div class="extras">
-                            <a @click="togglePasswordReset">Back to Log In</a>
+                            <a @click="togglePasswordReset">Kembali ke Login</a>
                         </div>
                     </div>
                     <div v-else>
@@ -101,14 +101,13 @@
                     </div>
                 </v-form>
                 <!-- Alert -->
-                <transition nama="fade">
                     <div v-if="error" class="error-msg">
                     <app-alert @dismissed="onDismissed" :text="error.message"></app-alert>
                     </div>
-                </transition>
             </div>
         </section>
     </div>
+    
 </template>
 
 <script>

@@ -325,7 +325,7 @@ export default new Vuex.Store({
         
       })
     },
-    // AKSI UNTUK DELETE ROOM
+    // AKSI UNTUK DELETE Bank
     deleteBank({commit}, payload){
       db.collection("banks").doc(payload.id).delete().then(function() {
         console.log("Dokumen berhasil dihapus!");
@@ -555,31 +555,52 @@ export default new Vuex.Store({
       })
     },
     // CHECK-IN OLEH ADMIN
-    checkin({commit},payload){
+    checkin({commit,getters},payload){
       const updateObj = {
         status_reservasi: payload.status_reservasi,
       }
       if (payload.reservasi_id){
         updateObj.reservasi_id = payload.reservasi_id
       }
-      commit('setLoading', false)
-      // menghubungkan ke firebase dan simpan di cloud firestore
-      db.collection('reservasi').doc(payload.reservasi_id).update({
-        status_reservasi: payload.status_reservasi
+      if (payload.nama){
+        updateObj.nama = payload.nama
+      }
+      if (payload.total){
+        updateObj.total = payload.total
+      }
+      // Get a new write batch
+      var batch = db.batch();
+      // Set the value of doc
+      var add = db.collection("pendapatan").doc();
+      batch.set(add, {
+        front_id: getters.user.id,
+        nama: payload.nama,
+        waktu_checkin: payload.waktu_checkin,
+        total: payload.total,
+      });
+      // Update the data
+      var update = db.collection('reservasi').doc(payload.reservasi_id);
+      batch.update(update, {
+        status_reservasi: payload.status_reservasi,
+        waktu_checkin: payload.waktu_checkin,
+      });
+
+      // Commit the batch
+      batch.commit().then(function () {
+        commit('setLoading', false)
+        console.log("Pelanggan berhasil Check-In")        
       })
-      .then(function() {
-        console.log("Pelanggan berhasil Check-In");
-    })
-    .catch(function(error) {
-        // The document probably doesn't exist.
-        console.error("Error updating document: ", error);
-    })
+      .catch(function(error) {
+          // The document probably doesn't exist.
+          console.error("Error updating document: ", error);
+      })
     },
     // CHECK-OUT OLEH ADMIN
     checkout({commit},payload){
       const updateObj = {
         status_reservasi: payload.status_reservasi,
-        status: payload.status
+        status: payload.status,
+        waktu_checkout: payload.waktu_checkout
       }
       if (payload.reservasi_id){
         updateObj.reservasi_id = payload.reservasi_id
@@ -590,7 +611,8 @@ export default new Vuex.Store({
       commit('setLoading', false)
       // menghubungkan ke firebase dan simpan di cloud firestore
       db.collection('reservasi').doc(payload.reservasi_id).update({
-        status_reservasi: payload.status_reservasi
+        status_reservasi: payload.status_reservasi,
+        waktu_checkout: payload.waktu_checkout
       })
       .then(() => {
         console.log("Pelanggan berhasil Check-Out");
@@ -752,7 +774,6 @@ export default new Vuex.Store({
       db.collection('users').add(pengguna).then(() => {
         console.log(pengguna)
         commit('setLoading', false)
-        firebase.auth().createUserWithEmailAndPassword(payload.email, payload.password)
         })
         .catch(error => {
           console.log(error)

@@ -13,7 +13,7 @@
             <v-card-text>
                 <v-form class="px-3" ref="form" @submit.prevent="submit">
                     <v-text-field label="Nama Makanan" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
-                    <v-text-field label="Harga/Hari" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
+                    <v-text-field label="Harga/Paket" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
                     <v-select
                       :items="items"
                       item-text="text"

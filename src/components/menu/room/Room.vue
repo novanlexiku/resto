@@ -1,10 +1,6 @@
 <template>
     <v-container grid-list-sm>
-        <!-- Snackbar -->
-        <v-snackbar v-model="snackbar" top color="success">
-          <span>Data berhasil ditambahkan</span>
-          <v-btn text color="white" @click="snackbar = false">Close</v-btn>
-        </v-snackbar>
+        
                 
                         <v-row>
                             <!-- Deskripsi Ruangan -->
@@ -98,7 +94,6 @@
 export default {
     data: () => ({
         image:true,
-        snackbar: false,
         dialog:false,
     }),
     props:['id'],

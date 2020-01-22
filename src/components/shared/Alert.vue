@@ -1,14 +1,18 @@
 <template>
-                    <v-alert
-                    @input="onClose"
-                    border="right"
-                    colored-border
-                    type="error"
-                    dismissible
-                    :value="true"
-                    >
+<div>
+<v-alert
+      dismissible
+      color="error"
+      border="left"
+      elevation="2"
+      colored-border
+      icon="mdi-alert"
+      :value="true"
+    >
                     {{text}}
-                    </v-alert>
+    </v-alert>
+</div>
+
 </template>
 
 <script>

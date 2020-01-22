@@ -21,13 +21,7 @@
                 <div class="subtitle-1 text-uppercase pl-2 mb-4">
                   Restoran Makanan Laut · Restoran Keluarga
                 </div>
-              <v-btn
-                color="primary"
-                depressed
-                router to="/login"
-              >
-                Berlangganan
-              </v-btn>
+              
       </v-col>
     </v-row></v-parallax>
 </v-card>
