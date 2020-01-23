@@ -49,11 +49,11 @@
     data: () => ({
       items: [
         {
-          href: '#!',
+          href: 'https://twitter.com/Giliseafoodyk?s=08',
           icon: 'mdi-twitter'
         },
         {
-          href: '#!',
+          href: 'https://www.instagram.com/waroenggili/?igshid=1pqoe4b0exhm1',
           icon: 'mdi-instagram'
         },
         {
