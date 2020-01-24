@@ -17,6 +17,7 @@ import ListProRes from '../components/menu/res/ListReservasi'
 import FoodExplore from '../components/menu/Explore'
 import Tutorial from '../components/menu/tutorial/Tutorial'
 import Bank from '../components/menu/bank/Banks'
+import Category from '../components/menu/kategori/Categorys'
 import CheckIn from '../components/menu/check/CheckIn'
 import CheckOut from '../components/menu/check/CheckOut'
 import Profile from '../components/user/Profile'
@@ -113,6 +114,11 @@ const routes = [
     path: '/bank',
     name: 'Bank',
     component: Bank,
+    beforeEnter: AuthGuard
+  },{
+    path: '/category',
+    name: 'Category',
+    component: Category,
     beforeEnter: AuthGuard
   },{
     path: '/user/profile',

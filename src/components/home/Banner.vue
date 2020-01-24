@@ -16,7 +16,10 @@
       <v-col class="text-right" cols="12">
         
                 <h1 class="display-2 font-weight-thin">
-                  GILI SEAFOOD & GRILL
+                  WAROENG GILI
+                </h1>
+                <h1 class="headline font-weight-thin">
+                 SEAFOOD & GRILL
                 </h1>
                 <div class="subtitle-1 text-uppercase pl-2 mb-4">
                   Restoran Makanan Laut · Restoran Keluarga

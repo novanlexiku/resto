@@ -12,6 +12,7 @@ export default new Vuex.Store({
   // STATE = KONDISI AWAL DARI DATA
   state: {
     loadedBanks:[],
+    loadedCategorys:[],
     loadedRooms: [],
     loadedFoods: [],
     loadedReservasi:[],
@@ -157,6 +158,27 @@ export default new Vuex.Store({
     createBanks (state, payload){
       state.loadedBanks.push(payload)
     }, 
+     // update data category
+     updateCategory (state, payload) {
+      const category = state.loadedCategorys.find(category => {
+        return category.id === payload.id
+      })
+      if (payload.title) {
+        category.title = payload.title
+      }
+      if (payload.value) {
+        category.value = payload.value
+      }
+      
+    },
+    // set perubahan data category
+    setLoadedCategorys (state, payload){
+      state.loadedCategorys = payload
+    },
+    // push data category
+    createCategorys (state, payload){
+      state.loadedCategorys.push(payload)
+    },
     setLoadedReservasi (state, payload){
       state.loadedReservasi = payload
     },
@@ -255,7 +277,23 @@ export default new Vuex.Store({
      })
       })
     },
-
+// load data category
+loadCategorys ({commit}) {
+      
+  // set data menggunakan cloud firestore
+  db.collection("categorys")
+  .onSnapshot(function(querySnapshot) {
+    const categorys = []
+    querySnapshot.forEach((doc) => {
+      categorys.push({
+        ...doc.data(),
+        id: doc.id
+      })
+      commit('setLoadedCategorys',categorys)
+      
+ })
+  })
+},
     // load data reservasi
     loadReservasi ({commit}) {
       // set data menggunakan cloud firestore
@@ -288,6 +326,8 @@ export default new Vuex.Store({
      })
       })
     },
+
+
     // simpan data bank ke cloud firestore
     createBank ({commit}, payload) {
       const bank = {
@@ -328,6 +368,52 @@ export default new Vuex.Store({
     // AKSI UNTUK DELETE Bank
     deleteBank({commit}, payload){
       db.collection("banks").doc(payload.id).delete().then(function() {
+        console.log("Dokumen berhasil dihapus!");
+    }).catch(function(error) {
+      commit('clearError')
+        console.error("Error removing document: ", error);
+    });
+    
+    },
+
+    // simpan data category ke cloud firestore
+    createCategory ({commit}, payload) {
+      const category = {
+        title: payload.title,
+        value: payload.value,
+      }
+      // menghubungkan ke firebase dan simpan di cloud firestore
+      db.collection('categorys').add(category).then(() => {
+        console.log(category)
+        commit('setLoading', false)
+        })
+    },
+    // aksi edit category
+    editCategory ({commit}, payload){
+      const updateObj = {}
+      if (payload.title) {
+        updateObj.title = payload.title
+      }
+      if (payload.rekening) {
+        updateObj.rekening = payload.rekening
+      }
+      if (payload.nama) {
+        updateObj.nama = payload.nama
+      }
+      var update = db.collection("categorys").doc(payload.id);
+      update.update(updateObj)
+      .then(() => {
+        
+        commit('updateCategory', payload)
+      })
+      .catch(error => {
+        console.log(error)
+        
+      })
+    },
+    // AKSI UNTUK DELETE Category
+    deleteCategory({commit}, payload){
+      db.collection("categorys").doc(payload.id).delete().then(function() {
         console.log("Dokumen berhasil dihapus!");
     }).catch(function(error) {
       commit('clearError')
@@ -1073,6 +1159,8 @@ export default new Vuex.Store({
       commit('clearError')
     },
   },
+
+
   // GETTERS = MENGAMBIL DATA DARI STATE
   getters: {
     //data yang akan ditampilkan di landing
@@ -1131,6 +1219,10 @@ export default new Vuex.Store({
     // load data banks
     featuredBanks (state){
       return state.loadedBanks
+    },
+    // load data categorys
+    featuredCategorys (state){
+      return state.loadedCategorys
     },
     // load data reservasi
     featuredReservasi (state){

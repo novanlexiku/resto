@@ -15,8 +15,8 @@
                     <v-text-field label="Nama Makanan" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
                     <v-text-field label="Harga/Paket" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
                     <v-select
-                      :items="items"
-                      item-text="text"
+                      :items="kategori"
+                      item-text="title"
                       item-value="value"
                       label="Jenis Makanan"
                       v-model="jenis"
@@ -41,14 +41,11 @@
         </v-card>
     </v-dialog>
 </template>
-
+ 
 <script>
 export default {
   data: () => ({
-    items: [{text: 'Standar',value: 'Standar'},
-            {text: 'Family',value: 'Family'},
-            {text: 'Deluxe',value: 'Deluxe'}
-            ],
+    
     title: '',
     harga: '',
     status: 'available',
@@ -69,7 +66,9 @@ export default {
     dialog: false,
   }),
   computed:{
-
+    kategori(){
+      return this.$store.getters.featuredCategorys
+    }
   },
   methods: {
     submit(){
