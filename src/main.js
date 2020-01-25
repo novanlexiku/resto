@@ -42,6 +42,7 @@ new Vue({
       }
     })
   this.$store.dispatch('loadRooms'),
+  this.$store.dispatch('loadFoods'),
   this.$store.dispatch('loadBanks'),
   this.$store.dispatch('loadCategorys'),
   this.$store.dispatch('loadReservasi'),

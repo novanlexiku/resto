@@ -503,7 +503,6 @@ loadCategorys ({commit}) {
       const food = {
         title: payload.title,
         harga: payload.harga,
-        status: payload.status,
         deskripsi: payload.deskripsi,
         jenis: payload.jenis,
         prominent: payload.prominent,
@@ -1187,9 +1186,7 @@ loadCategorys ({commit}) {
     },
     // Filter data yang akan di load
     loadedFoods (state){
-      return state.loadedFoods.filter(food =>{
-        return food.status === 'available'
-      })
+      return state.loadedFoods
     },
     // Data di load per id
     loadedFood (state){

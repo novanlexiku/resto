@@ -18,7 +18,7 @@
             <v-card-text>
                 <v-form class="px-3" ref="form" @submit.prevent="submit">
                     <v-text-field label="Nama Makanan" v-model="title" prepend-icon="mdi-account" :rules="inputRules"></v-text-field>
-                    <v-text-field label="Harga/Paket" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
+                    <v-text-field label="Harga/Porsi" v-model="harga" prefix="Rp." prepend-icon="mdi-wallet" :rules="inputRules"></v-text-field>
                     <v-textarea label="Spesifikasi" v-model="deskripsi" prepend-icon="mdi-border-color" :rules="inputRules"></v-textarea>
                     <v-btn text class="primary ml-8 mt-3" type="submit" :loading="loading">Edit Makanan</v-btn>
                 </v-form>

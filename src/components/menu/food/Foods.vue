@@ -3,11 +3,11 @@
       <v-container class="my-5">
         <!-- Snackbar -->
         <v-snackbar v-model="snackbar" top color="success">
-          <span>Data berhasil ditambahkan</span>
+          <span>Data Makanan berhasil ditambahkan</span>
           <v-btn text color="white" @click="snackbar = false">Close</v-btn>
         </v-snackbar>
         <v-snackbar v-model="snackbar2" top color="alert">
-          <span>Data ruang berhasil dihapus</span>
+          <span>Data Makanan berhasil dihapus</span>
           <v-btn text color="white" @click="snackbar2 = false">Close</v-btn>
         </v-snackbar>
           <!-- Sort data + tooltip -->
@@ -22,15 +22,7 @@
             <span>Sort foods by food name</span>
             </v-tooltip>
             
-            <v-tooltip top>
-                <template v-slot:activator="{on}">
-                <v-btn small text color="grey" @click="sortByA('status')" v-on="on">
-                <v-icon left small>mdi-calendar-clock</v-icon>
-                <span class="caption text-lowercase">By Status</span>
-            </v-btn>
-                </template>
-                <span>Sort foods by status</span>
-            </v-tooltip>
+            
             <v-spacer></v-spacer>
             <Popup @foodAdded="snackbar=true" />
            </v-row>
@@ -53,13 +45,8 @@
                       <div class="caption grey--text">Gambar</div>
                       <div class="justify-end"><v-img aspect-ratio="1" :src="food.image"></v-img></div>
                   </v-col>
-                  <v-col cols="6" md="2">
-                        <div class="caption grey--text">Status</div>
-                        <div justify="space-between">
-                            <v-chip small :color="`${food.status}`" :class="`v-chip--active white--text caption my-2`">{{food.status}}</v-chip>
-                        </div>
-                  </v-col>
-                  <v-col cols="6" md="2">
+                 
+                  <v-col cols="6" md="4">
                         <div class="caption grey--text">Aksi</div>
                         <div justify="space-between">
                                               
