@@ -41,25 +41,21 @@
                       <div class="caption grey--text">Nama Ruangan</div>
                       <div>{{room.title}}</div>
                   </v-col>
-                  <v-col cols="6" md="2">
-                      <div class="caption grey--text">Harga/Hari</div>
+                  <v-col cols="12" md="2">
+                      <div class="caption grey--text">Harga</div>
                       <div>{{room.harga}}</div>
                   </v-col>
-                  <v-col cols="6" md="2">
-                      <div class="caption grey--text">Fitur</div>
-                      <div>{{room.deskripsi}}</div>
-                  </v-col>
-                  <v-col cols="6" md="2">
+                  <v-col cols="12" md="2">
                       <div class="caption grey--text">Gambar</div>
                       <div class="justify-end"><v-img aspect-ratio="1" :src="room.image"></v-img></div>
                   </v-col>
-                  <v-col cols="6" md="2">
+                  <v-col cols="12" md="2">
                         <div class="caption grey--text">Status</div>
                         <div justify="space-between">
                             <v-chip small :color="`${room.status}`" :class="`v-chip--active white--text caption my-2`">{{room.status}}</v-chip>
                         </div>
                   </v-col>
-                  <v-col cols="6" md="2">
+                  <v-col cols="12" md="4">
                         <div class="caption grey--text">Aksi</div>
                         <div justify="space-between">
                                               

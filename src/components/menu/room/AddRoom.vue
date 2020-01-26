@@ -45,9 +45,9 @@
 <script>
 export default {
   data: () => ({
-    items: [{text: 'Standar',value: 'Standar'},
+    items: [{text: 'Couple',value: 'Couple'},
             {text: 'Family',value: 'Family'},
-            {text: 'Deluxe',value: 'Deluxe'}
+            {text: 'Group',value: 'Group'}
             ],
     title: '',
     harga: '',

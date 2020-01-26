@@ -10,16 +10,11 @@
       <v-stepper v-model="e1">
       <v-stepper-header>
         <v-stepper-step :complete="e1 > 1" step="1">Mengisi Form</v-stepper-step>
-
         <v-divider></v-divider>
-
         <v-stepper-step :complete="e1 > 2" step="2">Konfirmasi Data</v-stepper-step>
-
         <v-divider></v-divider>
-
         <v-stepper-step step="3">Reservasi</v-stepper-step>
       </v-stepper-header>
-
     <v-stepper-items>
         <!-- Stepper 1 -->
       <v-stepper-content step="1">
@@ -55,7 +50,7 @@
                                                             </v-img>
                                                     </v-dialog>
                                             <v-list-item-title class="headline">{{room.title}}</v-list-item-title>
-                                            <v-list-item-subtitle>Harga : {{room.harga|toCurrency}} / Hari</v-list-item-subtitle>
+                                            <v-list-item-subtitle>Harga : {{room.harga|toCurrency}}</v-list-item-subtitle>
                                         </v-list-item-content>
                                         </v-list-item>
                                                 <div class="d-flex flex-no-wrap justify-space-between" >
@@ -126,9 +121,6 @@
                                                       </v-menu>
                                                     </v-col>
                                                   <v-col cols="12" sm="6"> 
-                                                    <v-text-field label="Lama Sewa" v-model="sewa" suffix="hari" prepend-icon="mdi-arrow-right-bold-box-outline"></v-text-field>
-                                                  </v-col>
-                                                  <v-col cols="12" sm="6"> 
                                                   <v-select 
                                                           :items="banks"
                                                           v-model="bank"
@@ -140,9 +132,7 @@
                                                           autocomplete
                                                           ></v-select>
                                                   </v-col>
-                                                  <v-col cols="12" sm="6">
-                                                        <v-text-field v-model="total"  prefix="IDR " prepend-icon="mdi-currency-usd" readonly></v-text-field>
-                                                        </v-col>
+                                                  
                                                         <v-col cols="12" sm="6">
                                                         <v-text-field v-model="checkin" prepend-icon="mdi-calendar-clock" label="Tanggal dan Waktu Check-In" readonly></v-text-field>
                                                         </v-col>
@@ -200,7 +190,7 @@
                                                         </v-img>
                                                 </v-dialog>
                                         <v-list-item-title class="headline">{{room.title}}</v-list-item-title>
-                                        <v-list-item-subtitle>Harga : {{room.harga|toCurrency}} / Hari</v-list-item-subtitle>
+                                        <v-list-item-subtitle>Harga : {{room.harga|toCurrency}}</v-list-item-subtitle>
                                     </v-list-item-content>
                                     </v-list-item>
                                             <div class="d-flex flex-no-wrap justify-space-between" >
@@ -225,15 +215,11 @@
                                                     <v-col cols="12" sm="6">
                                                     <v-text-field :value="checkin" label="Tanggal dan Waktu Check-in" prepend-icon="mdi-calendar-account" readonly></v-text-field>
                                                     </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field label="Lama Sewa" v-model="sewa" suffix="hari" prepend-icon="mdi-arrow-right-bold-box-outline" readonly></v-text-field>
-                                                    </v-col>
+                                                    
                                                     <v-col cols="12" sm="6">
                                                     <v-text-field label="Transfer ke Rekening" v-model="bank" prepend-icon="mdi-bank" readonly></v-text-field>
                                                     </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field v-model="total" prefix="IDR " prepend-icon="mdi-currency-usd" readonly></v-text-field>
-                                                    </v-col>
+                                                    
                                                 <v-btn
                                                 color="primary"
                                                 class="ma-3"
@@ -263,7 +249,7 @@
                                                     <v-text-field outlined label="Nama Ruangan" v-model="room.title" readonly></v-text-field>
                                                     </v-col>
                                                     <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Harga / hari" v-model="room.harga" readonly></v-text-field>
+                                                    <v-text-field outlined label="Harga" v-model="room.harga" prefix="IDR" readonly></v-text-field>
                                                     </v-col>
                                                     <v-col cols="12" sm="6">
                                                     <v-text-field outlined label="Nama" v-model="nama" readonly></v-text-field>
@@ -277,15 +263,11 @@
                                                     <v-col cols="12" sm="6">
                                                     <v-text-field outlined :value="checkin" label="Tanggal dan Waktu Check-in" readonly></v-text-field>
                                                     </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Lama Sewa" v-model="sewa" suffix="hari" readonly></v-text-field>
-                                                    </v-col>
+                                                    
                                                     <v-col cols="12" sm="6">
                                                     <v-text-field outlined label="Transfer ke Rekening" v-model="bank" readonly></v-text-field>
                                                     </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined v-model="total" prefix="IDR " readonly></v-text-field>
-                                                    </v-col>
+                                                    
                                                 <v-btn
                                                   color="primary"
                                                   class="ma-3"
@@ -342,8 +324,7 @@ import parseISO from 'date-fns/parseISO'
         time: '',
         status: 'booked',
         bank:null,
-        sewa: '',
-        total: '',
+       
         status_reservasi: 'diproses',
         // Rules input + rules date
         inputRules:[
@@ -359,9 +340,7 @@ import parseISO from 'date-fns/parseISO'
     },
     watch:{
     
-    sewa(newVal){
-      this.total = newVal * this.room.harga
-    },
+    
     
   },
     props:['id'],
@@ -402,7 +381,7 @@ methods: {
               status: this.status,
               bank: this.bank,
               sewa: this.sewa,
-              total: this.total,
+              total: this.room.harga,
               status_reservasi: this.status_reservasi
           }
           
