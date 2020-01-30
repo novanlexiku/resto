@@ -11,7 +11,7 @@
       <v-stepper-header>
         <v-stepper-step :complete="e1 > 1" step="1">Mengisi Form</v-stepper-step>
         <v-divider></v-divider>
-        <v-stepper-step :complete="e1 > 2" step="2">Konfirmasi Data</v-stepper-step>
+        <v-stepper-step :complete="e1 > 2" step="2">Pre Order Makanan</v-stepper-step>
         <v-divider></v-divider>
         <v-stepper-step step="3">Reservasi</v-stepper-step>
       </v-stepper-header>
