@@ -20,7 +20,7 @@
                     <v-text-field label="Tanggal dan Waktu Check-Out" v-model="konfirmasiCheckout" prepend-icon="mdi-calendar-clock" outlined readonly></v-text-field>
                     <div class="ml-8">
                         <v-alert type="success">
-                        Pelanggan sudah mengembalikan kunci ruangan    
+                        Pelanggan sudah selesai menggunakan ruangan / meja    
                         </v-alert>
                     </div>
                     <br>

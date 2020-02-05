@@ -4,7 +4,7 @@
   <v-container class="my-5">
      <!-- Snackbar -->
         <v-snackbar v-model="snackbar" top color="warning">
-          <span>Pelanggan telah mengembalikan kunci ruangan</span>
+          <span>Pelanggan telah selesai menggunakan meja</span>
           <v-btn text color="white" @click="snackbar = false">Close</v-btn>
         </v-snackbar>
     <h2 class="subtitle-1 ma-4">Pelanggan Siap Melakukan Check-out</h2>
