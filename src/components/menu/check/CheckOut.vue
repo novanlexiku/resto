@@ -21,7 +21,7 @@
           <div>Room ID : {{checkout.room_id}}</div>
           <div>Nama Pemesan : {{checkout.nama}}</div>
           <div>Total Biaya Pemesanan : Rp.{{checkout.total}}</div>
-          <div>Lama Sewa : {{checkout.sewa}} hari</div>
+          <div>Lama Sewa : {{checkout.sewa}} jam</div>
           <div>Tanggal Check-In : {{checkout.checkin}}</div>
           <div>Status Pemesanan : {{checkout.status_reservasi}}</div>
         <Checkout :checkout="checkout" @checkout="snackbar=true"/>

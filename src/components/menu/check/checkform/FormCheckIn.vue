@@ -17,7 +17,7 @@
             <v-card-text>
                 <v-form class="px-3" ref="form" @submit.prevent="submit">
                     <v-text-field label="Nama Ruangan" v-model="nama" prepend-icon="mdi-account" outlined readonly></v-text-field>
-                    <v-text-field label="Lama Sewa" v-model="sewa" suffix="hari" prepend-icon="mdi-arrow-right-bold-box-outline" outlined readonly></v-text-field>
+                    <v-text-field label="Lama Sewa" v-model="sewa" suffix="jam" prepend-icon="mdi-arrow-right-bold-box-outline" outlined readonly></v-text-field>
                       <v-text-field v-model="konfirmasiCheckin" prepend-icon="mdi-calendar-clock" label="Tanggal dan Waktu Check-In" outlined readonly></v-text-field>
                                         <div class="ml-8">
                         <v-alert type="success">

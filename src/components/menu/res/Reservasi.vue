@@ -417,7 +417,7 @@ methods: {
               status: this.status,
               bank: this.bank,
               sewa: this.sewa,
-              total: this.total,
+              total: this.total2,
               status_reservasi: this.status_reservasi
           }
           

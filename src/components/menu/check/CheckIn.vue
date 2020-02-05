@@ -20,7 +20,7 @@
           <div>ID Pemesan : {{checkin.reserv_id}}</div>
           <div>Nama Pemesan : {{checkin.nama}}</div>
           <div>Total Biaya Pemesanan : Rp.{{checkin.total}}</div>
-          <div>Lama Sewa : {{checkin.sewa}} hari</div>
+          <div>Lama Sewa : {{checkin.sewa}} jam</div>
           <div>Tanggal Check-In : {{checkin.checkin}}</div>
           <div>Status Pemesanan : {{checkin.status_reservasi}}</div>
         <Checkin :checkin="checkin" @checkin="snackbar=true"/>

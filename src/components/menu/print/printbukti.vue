@@ -65,7 +65,7 @@
                       <br>
                       <strong>Total Biaya Pemesanan : </strong>{{history.total|toCurrency}}
                       <br>
-                      <strong>Lama Sewa : </strong>{{history.sewa}} hari
+                      <strong>Lama Sewa : </strong>{{history.sewa}} jam
                       <br>
                       <strong>Tanggal Check-in : </strong>{{history.checkin}}
                       <br>
@@ -87,7 +87,7 @@
                       <br>
                       <strong>Total Biaya Pemesanan : </strong>{{history.total|toCurrency}}
                       <br>
-                      <strong>Lama Sewa : </strong>{{history.sewa}} hari
+                      <strong>Lama Sewa : </strong>{{history.sewa}} jam
                       <br>
                       <strong>Tanggal Check-in : </strong>{{history.checkin}}
                       <br>
@@ -109,7 +109,7 @@
                       <br>
                       <strong>Total Biaya Pemesanan : </strong>{{history.total|toCurrency}}
                       <br>
-                      <strong>Lama Sewa : </strong>{{history.sewa}} hari
+                      <strong>Lama Sewa : </strong>{{history.sewa}} jam
                       <br>
                       <strong>Tanggal Check-in : </strong>{{history.checkin}}
                       <br>
@@ -131,7 +131,7 @@
                       <br>
                       <strong>Total Biaya Pemesanan : </strong>{{history.total|toCurrency}}
                       <br>
-                      <strong>Lama Sewa : </strong>{{history.sewa}} hari
+                      <strong>Lama Sewa : </strong>{{history.sewa}} jam
                       <br>
                       <strong>Tanggal Check-in : </strong>{{history.checkin}}
                       <br>
@@ -154,7 +154,7 @@
                         <br>
                         <strong>Total Biaya Pemesanan : </strong>{{history.total|toCurrency}}
                         <br>
-                        <strong>Lama Sewa : </strong>{{history.sewa}} hari
+                        <strong>Lama Sewa : </strong>{{history.sewa}} jam
                         <br>
                         <strong>Tanggal Check-in : </strong>{{history.checkin}}
                         <br>
