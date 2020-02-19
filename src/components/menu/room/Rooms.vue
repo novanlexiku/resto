@@ -43,7 +43,7 @@
                   </v-col>
                   <v-col cols="12" md="2">
                       <div class="caption grey--text">Harga</div>
-                      <div>{{room.harga}}</div>
+                      <div>{{room.harga|toCurrency}}</div>
                   </v-col>
                   <v-col cols="12" md="2">
                       <div class="caption grey--text">Gambar</div>

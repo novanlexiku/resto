@@ -68,25 +68,7 @@
                                                 </v-card-text>
                                             </div>
                                             </div>
-                                    <v-card-actions>
-                                    <v-btn
-                                    v-if="food.status === 'available'"
-                                        text
-                                        color="primary accent-4"
-                                        @click="onLoadFood(food.id)"
-                                    >
-                                        Pesan Sekarang
-                                    </v-btn>
-                                    <v-btn
-                                    v-else
-                                    disabled
-                                        text
-                                        color="primary accent-4"
-                                        @click="onLoadFood(food.id)"
-                                    >
-                                        Tidak Tersedia
-                                    </v-btn>                                    
-                                    </v-card-actions>
+                                    
                                 </v-card>
                             </v-col>
                     </v-row>

@@ -35,7 +35,7 @@
                   </v-col>
                   <v-col cols="6" md="2">
                       <div class="caption grey--text">Harga/Porsi</div>
-                      <div>{{food.harga}}</div>
+                      <div>{{food.harga|toCurrency}}</div>
                   </v-col>
                   <v-col cols="6" md="2">
                       <div class="caption grey--text">Fitur</div>

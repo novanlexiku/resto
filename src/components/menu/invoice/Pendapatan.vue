@@ -46,8 +46,7 @@ export default {
     computed:{
     historys(){
           return this.$store.getters.featuredReservasi.filter(historys => {
-          return historys.status_reservasi === 'complete' 
-          || historys.status_reservasi === 'checkin' || historys.status_reservasi === 'checkout'
+          return historys.status_reservasi === 'checkin' || historys.status_reservasi === 'checkout'
         })    
     },
     pendapatan() {
