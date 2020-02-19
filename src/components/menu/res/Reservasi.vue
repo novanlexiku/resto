@@ -214,21 +214,18 @@
                                                         class="mx-1"
                                                         ></v-img>
                                                     <v-col cols="12" sm="6">
-                                                      <label><input type="checkbox" :id="item.id" :value="item" v-model="selected"> {{item.title}}</label>
-                                                      
-                                                    <!-- <input type="checkbox" v-model="selected" :label="`${item.title} Harga : IDR ${item.harga}`" :value="item.harga"></input>                                                     -->
+                                                      <label><input type="checkbox" :id="item.id" :value="item" v-model="selected"> {{item.title}} | {{item.harga|toCurrency}} / Porsi</label>
                                                     </v-col>
                                                   </v-container>
                                                   <v-divider></v-divider>
                                                   <v-col class="pa-6" cols="6">
                                                   <template>
                                                     <div>
-                                                    <span>Total : {{ total2}}</span>
+                                                    <span>Total : {{ total2}} (+ Ruangan)</span>
                                                     </div>
                                                     </template>
                                                   </v-col>
                                                     
-
                                                     
                                                 <v-btn
                                                 color="primary"
@@ -250,48 +247,38 @@
       <v-stepper-content step="3">
                             <v-row>
                               <!-- Deskripsi Reservasi -->
+                              <v-col cols="12" sm="12">
+                                                  
+                                                </v-col>
                             <v-col cols="12" sm="12">
+                              <v-card class="ma-3">
+                                                    <v-card-text>
+                                                      <div>Pemesanan</div>
+                                                      <p class="display-1 text--primary">
+                                                        {{room.title}}
+                                                      </p>
+                                                      <p class="caption text--primary">
+                                                        Harga Sewa : {{room.harga|toCurrency}}
+                                                      </p>
+                                                      <p>Pre Order Makan:</p>
+                                                      <div v-for="item in selected" :key="item.id">
+                                                        <p>{{ item.title }}</p>
+                                                      </div>
+                                                      <div class="text--primary">
+                                                        <p> Atas Nama : {{this.nama}}</p>
+                                                        Lakukan pembayaran ke <br>
+                                                        No. Rekening {{this.bank}}<br>
+                                                        Dengan jumlah {{this.total2|toCurrency}}
+                                                      </div>
+                                                    </v-card-text>
+                                                    <v-card-actions>
+                                                    </v-card-actions>
+                                                  </v-card>
                                 <v-card>
                                             <div class="d-flex flex-no-wrap justify-space-between" >
                                             <v-card-text max-width="300">
                                                 <v-form ref="form" @submit.prevent="submit">
-                                                  <!-- <v-col class="pa-6" cols="6">
-                                                  <template v-if="!selection.length">
-                                                    No nodes selected.
-                                                  </template>
-                                                  <template v-else>
-                                                    <div v-for="node in selection" :key="node.id">
-                                                      {{ node.title }} : {{node.harga}}
-                                                    </div>
-                                                  </template>
-                                                </v-col> -->
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Nama Ruangan" v-model="room.title" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Harga / Jam" v-model="room.harga" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Nama" v-model="nama" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="No Ktp" v-model="no_ktp" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Telp" v-model="telp" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined :value="checkin" label="Tanggal dan Waktu Check-in" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Lama Sewa" v-model="sewa" suffix="Jam" readonly></v-text-field>
-                                                    </v-col>
-                                                    <v-col cols="12" sm="6">
-                                                    <v-text-field outlined label="Transfer ke Rekening" v-model="bank" readonly></v-text-field>
-                                                    </v-col>
-                                                    <!-- <v-col cols="12" sm="6">
-                                                    <v-text-field outlined v-model="total2" prefix="IDR " readonly></v-text-field>
-                                                    </v-col> -->
+                                              
                                                 <v-btn
                                                   color="primary"
                                                   class="ma-3"
@@ -305,26 +292,7 @@
                                             </div>
                                                 </v-card>                                              
                             </v-col>
-                            <v-col cols="12" sm="12">
-                                                  <v-card
-                                                    height="250"
-                                                    >
-                                                    <v-card-text>
-                                                      <div>Pemesanan</div>
-                                                      <p class="display-1 text--primary">
-                                                        {{room.title}}
-                                                      </p>
-                                                      <p> Atas Nama : {{this.nama}}</p>
-                                                      <div class="text--primary">
-                                                        Lakukan pembayaran ke <br>
-                                                        No. Rekening {{this.bank}}<br>
-                                                        Dengan jumlah IDR {{this.total2}}
-                                                      </div>
-                                                    </v-card-text>
-                                                    <v-card-actions>
-                                                    </v-card-actions>
-                                                  </v-card>
-                                                </v-col>
+                            
                             </v-row>
       </v-stepper-content>
     </v-stepper-items>
