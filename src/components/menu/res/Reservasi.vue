@@ -128,7 +128,7 @@
                                                   <v-col cols="12" sm="6"> 
                                                     <v-text-field label="Lama Sewa" v-model="sewa" suffix="Jam" prepend-icon="mdi-arrow-right-bold-box-outline"></v-text-field>
                                                   </v-col>
-                                                  <v-col cols="12" sm="6"> 
+                                                  <!-- <v-col cols="12" sm="6"> 
                                                   <v-select 
                                                           :items="banks"
                                                           v-model="bank"
@@ -139,7 +139,7 @@
                                                           bottom
                                                           autocomplete
                                                           ></v-select>
-                                                  </v-col>
+                                                  </v-col> -->
                                                   <v-col cols="12" sm="6">
                                                         <v-text-field v-model="total"  prefix="IDR " prepend-icon="mdi-currency-usd" readonly></v-text-field>
                                                         </v-col>
@@ -266,8 +266,8 @@
                                                       </div>
                                                       <div class="text--primary">
                                                         <p> Atas Nama : {{this.nama}}</p>
-                                                        Lakukan pembayaran ke <br>
-                                                        No. Rekening {{this.bank}}<br>
+                                                        <!-- Lakukan pembayaran ke <br>
+                                                        No. Rekening {{this.bank}}<br> -->
                                                         Dengan jumlah {{this.total2|toCurrency}}
                                                       </div>
                                                     </v-card-text>
